@@ -1,0 +1,26 @@
+package eu.kartoffelquadrat.bookstoreinternals;
+
+import java.util.Collection;
+
+/**
+ * A DAO for indexed books. There can only be one Assortment. Assortment implementations should not have a public
+ * constructor, only be accessed as a singleton.
+ */
+public interface Assortment {
+
+    /**
+     * Retrieves all books that are indexed (that a description is knwon for), no matter if they are in stock somewhere
+     * or not.
+     *
+     * @return the list off known isbns.
+     */
+    Collection<Long> getEntireAssortment();
+
+    /**
+     * Retrieved book details for a specific book, identified by isbn.
+     *
+     * @param isbn for the identifier of the book in question.
+     * @return A BookDetail object, containing the static metadata of the requested book.
+     */
+    BookDetails getBookDetails(Long isbn);
+}
