@@ -34,10 +34,13 @@ The following scenario / functionality is covered:
 
 On execution, the bookstore will simply print a listing of persisted initial dummy data.
 
- 1. Compile the bookstore with maven. This provides you with a self contained ```jar``` in the ```target```folder.  
+ 1. Get the sources:  
+```git clone https://github.com/kartoffelquadrat/BookStoreInternals.git```
+
+ 2. Compile the project with maven. This provides you with a self contained ```jar``` in the ```target```folder:  
 ```mvn clean package```
  
- 2. Run the jar with:  
+ 3. Run the jar:  
  ```java -jar target/BookStore.jar```
 
 ## Contact / Pull Requests
