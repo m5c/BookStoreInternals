@@ -2,6 +2,10 @@
 
 Server side java code for modeling case studies.
 
+![version](https://img.shields.io/badge/version-1.0-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)
+![building](https://img.shields.io/badge/build-passing-brightgreen)
+
 ## About
 
 This code imitates server side core functionality of a bookstore chain. It is not a complete implementation of an operational bookstore, but it provides entry points to imitate server data interactions.  
