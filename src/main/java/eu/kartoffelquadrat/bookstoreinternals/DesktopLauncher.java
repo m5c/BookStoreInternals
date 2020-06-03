@@ -23,7 +23,7 @@ public class DesktopLauncher {
 
         System.out.println("Welcome to the BookStore.");
         System.out.println("-------------------------");
-        System.out.println("Here is a listing of the all persisted data:");
+        System.out.println("Here is a listing of the persisted data:");
         System.out.print(assortment);
         System.out.print(stock);
         System.out.print(comments);
