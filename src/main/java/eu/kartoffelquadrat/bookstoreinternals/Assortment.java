@@ -5,6 +5,8 @@ import java.util.Collection;
 /**
  * A DAO for indexed books. There can only be one Assortment. Assortment implementations should not have a public
  * constructor, only be accessed as a singleton.
+ *
+ * @author Maximilian Schiedermeier
  */
 public interface Assortment {
 

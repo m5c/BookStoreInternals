@@ -1,5 +1,8 @@
 package eu.kartoffelquadrat.bookstoreinternals;
 
+/**
+ * @author Maximilian Schiedermeier
+ */
 public class BookDetailsImpl implements BookDetails {
 
     private long isbn;
@@ -41,7 +44,7 @@ public class BookDetailsImpl implements BookDetails {
         StringBuilder sb = new StringBuilder("ISBN: ").append(isbn).append("\n");
         sb.append(" > Title: ").append(title).append("\n");
         sb.append(" > Author: ").append(author).append("\n");
-        sb.append(" > Price: ").append(priceInCents/100).append(",").append(priceInCents%100).append(" CAD");
+        sb.append(" > Price: ").append(priceInCents/100).append(",").append(priceInCents%100).append(" CAD\n");
         sb.append(" > Abstract: ").append(bookAbstract).append("\n");
         return sb.toString();
     }

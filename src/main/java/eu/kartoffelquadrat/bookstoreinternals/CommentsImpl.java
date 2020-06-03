@@ -6,6 +6,8 @@ import java.util.Map;
 
 /**
  * DAO for comments on books. Singleton.
+ *
+ * @author Maximilian Schiedermeier
  */
 public class CommentsImpl implements Comments {
 
@@ -130,5 +132,19 @@ public class CommentsImpl implements Comments {
             return generateCommentId(isbn);
         else
             return randomLong;
+    }
+
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder("\n **************\n * Comments * \n **************\n");
+        for(long isbn: commentsByIsbn.keySet())
+        {
+            sb.append(isbn+":\n");
+            for(long commentId : commentsByIsbn.get(isbn).keySet())
+            {
+                sb.append(" > "+commentId + ": "+commentsByIsbn.get(isbn).get(commentId)+"\n");
+            }
+        }
+        return sb.toString();
     }
 }

@@ -3,6 +3,8 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 /**
  * Represents the stock of a local bookstore.
+ *
+ * @author Maximilian Schiedermeier
  */
 public interface LocalStock {
 

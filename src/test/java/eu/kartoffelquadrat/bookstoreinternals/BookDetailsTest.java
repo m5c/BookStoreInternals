@@ -2,6 +2,9 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 import org.junit.Test;
 
+/**
+ * @author Maximilian Schiedermeier
+ */
 public class BookDetailsTest {
 
     @Test

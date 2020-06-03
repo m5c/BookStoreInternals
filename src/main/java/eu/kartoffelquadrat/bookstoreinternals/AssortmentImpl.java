@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author Maximilian Schiedermeier
+ */
 public class AssortmentImpl implements Assortment {
 
     private static Assortment singletonReference = null;
@@ -61,7 +64,7 @@ public class AssortmentImpl implements Assortment {
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder("Assortment:\n");
+        StringBuilder sb = new StringBuilder("\n **************\n * Assortment * \n **************\n");
         for(BookDetails details: assortmentMap.values())
         {
             sb.append(details);

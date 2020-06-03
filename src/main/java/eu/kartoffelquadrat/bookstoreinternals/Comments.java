@@ -5,6 +5,8 @@ import java.util.Map;
 /**
  * A DAO for book comments. There can only be one Comments entity. Comments implementations should not have a public
  * constructor, only be accessed as a singleton.
+ *
+ * @author Maximilian Schiedermeier
  */
 public interface Comments {
 

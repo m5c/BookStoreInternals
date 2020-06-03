@@ -3,6 +3,8 @@ package eu.kartoffelquadrat.bookstoreinternals;
 /**
  * Interface for never-changing meta-data of a book. Book Details are immunable, therefore this interface has only
  * getters, no setters.
+ *
+ * @author Maximilian Schiedermeier
  */
 public interface BookDetails {
 

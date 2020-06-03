@@ -2,9 +2,11 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 import org.junit.Test;
 
-import java.util.Collection;
 import java.util.Map;
 
+/**
+ * @author Maximilian Schiedermeier
+ */
 public class CommentsTest {
 
     @Test
@@ -80,6 +82,19 @@ public class CommentsTest {
         comments.editComment(harryPotterIsbn, commentId, nextComment);
 
         assert comments.getAllCommentsForBook(harryPotterIsbn).get(commentId).equals(nextComment);
+    }
 
+    @Test(expected = RuntimeException.class)
+    public void testEditCommentForBlank() {
+        AssortmentImpl.getInstance();
+        Comments comments = CommentsImpl.getInstance();
+
+        long harryPotterIsbn = Long.valueOf("9780739360385");
+        comments.addComment(harryPotterIsbn, "A comment that will be replaced by blank.");
+        Map<Long, String> hpComments = comments.getAllCommentsForBook(harryPotterIsbn);
+
+        long commentId = hpComments.keySet().iterator().next();
+        String nextComment = "    "; // something blkank that should be rejected
+        comments.editComment(harryPotterIsbn, commentId, nextComment);
     }
 }

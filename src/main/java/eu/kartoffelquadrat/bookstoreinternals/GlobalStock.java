@@ -2,6 +2,8 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 /**
  * A DAO for the book stock in various locations.
+ *
+ * @author Maximilian Schiedermeier
  */
 public interface GlobalStock {
 

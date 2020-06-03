@@ -3,6 +3,9 @@ package eu.kartoffelquadrat.bookstoreinternals;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author Maximilian Schiedermeier
+ */
 public class GlobalStockImpl implements GlobalStock {
 
     private static GlobalStock singletonReference;
@@ -81,7 +84,17 @@ public class GlobalStockImpl implements GlobalStock {
 
         stocksPerCity.get("Lyon").setAmount(Long.valueOf("9780739360385"), 4);
         stocksPerCity.get("Lyon").setAmount(Long.valueOf("9780262538473"), 2);
+    }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("\n **************\n *    Stock   * \n **************\n");
+        for (String city : stocksPerCity.keySet())
+        {
+            sb.append(city+":\n");
+            sb.append(stocksPerCity.get(city));
+        }
+        return sb.toString();
     }
 
 }
