@@ -30,9 +30,9 @@ The following scenario / functionality is covered:
 
  * For a full description of available functionality, read the [JavaDoc](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/package-summary.html)
  * The relevant functionality is exposed by three interfaces:
-    * ```Assortment.java```, to access indexed books / index new books.
-    * ```GlobalStock.java```, to query and update the stock of individual agencies.
-    * ```Comments.java```, to add delete and edit comments on books.
+    * [```Assortment.java```](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/Assortment.html), to access indexed books / index new books.
+    * [```GlobalStock.java```](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/GlobalStock.html), to query and update the stock of individual agencies.
+    * [```Comments.java```](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/Comments.html), to add delete and edit comments on books.
 
 ## Usage
 
