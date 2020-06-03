@@ -30,4 +30,29 @@ public class AssortmentTest {
 
         assert firstInstance == secondInstance;
     }
+
+    @Test
+    public void testIndexNewBook()
+    {
+        Assortment assortment = new AssortmentImpl();
+
+        BookDetails littleMissSunshine = new BookDetailsImpl(Long.valueOf("9780843178166"), "Little Miss Sunshine", "Roger Hargreaves", 310, "They're back! Rediscover the zaniest characters you've ever met in this best-selling series which has sold millions worldwide. Bright and charming, with easily recognizable characters and a small take-along format, Mr. Men and Little Miss books are easy enough for young readers, witty enough for humor-prone adults...");
+        int assortmentSizeBeforeAdding = assortment.getEntireAssortment().size();
+
+        assortment.addBookToAssortment(littleMissSunshine);
+        assert assortment.getEntireAssortment().size() == assortmentSizeBeforeAdding+1;
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testRejectExistingIsbn()
+    {
+        Assortment assortment = new AssortmentImpl();
+
+        // Try to add something that collides with the harry potter ISBN
+        BookDetails conflictingBook = new BookDetailsImpl(Long.valueOf("9780739360385"), "Some fake title", "Some fake author", 42, "A dummy book that by ISB conflicts with HP and the deathly hallows.");
+        int assortmentSizeBeforeAdding = assortment.getEntireAssortment().size();
+
+        assortment.addBookToAssortment(conflictingBook);
+        assert assortment.getEntireAssortment().size() == assortmentSizeBeforeAdding;
+    }
 }

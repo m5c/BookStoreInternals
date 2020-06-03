@@ -25,4 +25,9 @@ public interface Assortment {
      * @return A BookDetail object, containing the static metadata of the requested book.
      */
     BookDetails getBookDetails(Long isbn);
+
+    /**
+     * Indexes a new book. The isbn of the bookDetails parameter bean must not conflict with an existing book.
+     */
+    void addBookToAssortment(BookDetails bookDetails);
 }

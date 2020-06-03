@@ -49,6 +49,14 @@ public class AssortmentImpl implements Assortment {
         return assortmentMap.get(isbn);
     }
 
+    @Override
+    public void addBookToAssortment(BookDetails bookDetails) {
+        if(assortmentMap.containsKey(bookDetails.getIsbn()))
+            throw new RuntimeException("Book can not be indexed, the ISBN conflicts to an existing book.");
+
+        assortmentMap.put(bookDetails.getIsbn(), bookDetails);
+    }
+
     /**
      * Adds fake books to the assortmentMap, adds dummy cities with dummy stocks.
      */
