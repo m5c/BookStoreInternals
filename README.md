@@ -24,7 +24,7 @@ The following scenario / functionality is covered:
 
 ## Documentation
 
- * For a full description of available functionality, read the [JavaDoc](JavaDoc/index.html)
+ * For a full description of available functionality, read the [JavaDoc](docs)
  * The relevant functionality is exposed by three interfaces:
     * ```Assortment.java```, to access indexed books / index new books.
     * ```GlobalStock.java```, to query and update the stock of individual agencies.
