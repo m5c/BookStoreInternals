@@ -1,5 +1,9 @@
 package eu.kartoffelquadrat.bookstoreinternals;
 
+
+import java.util.Collection;
+import java.util.Map;
+
 /**
  * A DAO for the book stock in various locations.
  *
@@ -24,4 +28,19 @@ public interface GlobalStock {
      * @param amount for the new amount in stock
      */
     void setStock(String city, Long isbn, Integer amount);
+
+    /**
+     * Returns a list of all cities that have a local stock
+     *
+     * @return a list of all cities (strings)
+     */
+    Collection<String> getStoreLocations();
+
+    /**
+     * Returns the entire stock of a local store.
+     *
+     * @return a map holding for each book (by isbn) the amount of books in stock at the specified location.
+     */
+    Map<Long, Integer> getEntireStoreStock(String city);
+
 }

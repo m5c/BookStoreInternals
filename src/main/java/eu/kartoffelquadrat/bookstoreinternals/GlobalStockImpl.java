@@ -1,5 +1,6 @@
 package eu.kartoffelquadrat.bookstoreinternals;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -58,6 +59,16 @@ public class GlobalStockImpl implements GlobalStock {
             throw new RuntimeException("Can not update amount in stock. No such city: " + city);
 
         stocksPerCity.get(city).setAmount(isbn, amount);
+    }
+
+    @Override
+    public Collection<String> getStoreLocations() {
+        return stocksPerCity.keySet();
+    }
+
+    @Override
+    public Map<Long, Integer> getEntireStoreStock(String city) {
+        return stocksPerCity.get(city).getEntireStock();
     }
 
     private void populateWithDummyData() {

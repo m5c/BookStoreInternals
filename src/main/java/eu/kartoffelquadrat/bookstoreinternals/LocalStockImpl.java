@@ -2,6 +2,7 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Collections;
 
 /**
  * @author Maximilian Schiedermeier
@@ -33,6 +34,11 @@ public class LocalStockImpl implements LocalStock {
             throw new RuntimeException("Stock updates are only allowed for indexed books.");
 
         stockByBook.put(isbn, amount);
+    }
+
+    @Override
+    public Map<Long, Integer> getEntireStock() {
+        return Collections.unmodifiableMap(stockByBook);
     }
 
     public String toString()

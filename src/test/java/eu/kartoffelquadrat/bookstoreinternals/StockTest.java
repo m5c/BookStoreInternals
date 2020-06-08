@@ -2,6 +2,9 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 import org.junit.Test;
 
+import java.util.Collection;
+import java.util.Map;
+
 /**
  * @author Maximilian Schiedermeier
  */
@@ -53,5 +56,30 @@ public class StockTest {
 
         GlobalStock globalStock = GlobalStockImpl.getInstance();
         globalStock.getStock("Bielefeld", harryPotterIsbn);
+    }
+
+    /**
+     * Try to get full stock of a local store.
+     */
+    @Test
+    public void testFullLocalStockAccess()
+    {
+        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        Map<Long, Integer> lyonStock = globalStock.getEntireStoreStock("Lyon");
+        assert lyonStock != null;
+        assert lyonStock.size() > 0;
+    }
+
+    /**
+     * Try to get a list of all cities that have something in stock
+     */
+    @Test
+    public void testGetAllLocations()
+    {
+        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        Collection<String> cities = globalStock.getStoreLocations();
+        assert !cities.isEmpty();
+        assert cities.size() == 4;
+        assert cities.contains("Lyon");
     }
 }
