@@ -3,13 +3,16 @@ package eu.kartoffelquadrat.bookstoreinternals;
 /**
  * @author Maximilian Schiedermeier
  */
-public class BookDetailsImpl implements BookDetails {
+public class BookDetailsImpl {
 
     private long isbn;
     private String title;
     private String author;
     private int priceInCents;
     private String bookAbstract;
+
+    // Default constructor required to support json deserialization without objenesis
+    public BookDetailsImpl(){}
 
     public BookDetailsImpl(long isbn, String title, String author, int priceInCents, String bookAbstract) {
         this.isbn = isbn;

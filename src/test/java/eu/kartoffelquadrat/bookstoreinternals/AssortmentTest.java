@@ -18,7 +18,7 @@ public class AssortmentTest {
     @Test
     public void testGetDetails() {
         Assortment assortment = new AssortmentImpl();
-        BookDetails bookDetails = assortment.getBookDetails(Long.valueOf("9780739360385"));
+        BookDetailsImpl bookDetails = assortment.getBookDetails(Long.valueOf("9780739360385"));
         assert bookDetails != null;
         assert bookDetails.getAuthor().equals("J.K.Rowling");
     }
@@ -36,7 +36,7 @@ public class AssortmentTest {
     {
         Assortment assortment = new AssortmentImpl();
 
-        BookDetails littleMissSunshine = new BookDetailsImpl(Long.valueOf("9780843178166"), "Little Miss Sunshine", "Roger Hargreaves", 310, "They're back! Rediscover the zaniest characters you've ever met in this best-selling series which has sold millions worldwide. Bright and charming, with easily recognizable characters and a small take-along format, Mr. Men and Little Miss books are easy enough for young readers, witty enough for humor-prone adults...");
+        BookDetailsImpl littleMissSunshine = new BookDetailsImpl(Long.valueOf("9780843178166"), "Little Miss Sunshine", "Roger Hargreaves", 310, "They're back! Rediscover the zaniest characters you've ever met in this best-selling series which has sold millions worldwide. Bright and charming, with easily recognizable characters and a small take-along format, Mr. Men and Little Miss books are easy enough for young readers, witty enough for humor-prone adults...");
         int assortmentSizeBeforeAdding = assortment.getEntireAssortment().size();
 
         assortment.addBookToAssortment(littleMissSunshine);
@@ -49,7 +49,7 @@ public class AssortmentTest {
         Assortment assortment = new AssortmentImpl();
 
         // Try to add something that collides with the harry potter ISBN
-        BookDetails conflictingBook = new BookDetailsImpl(Long.valueOf("9780739360385"), "Some fake title", "Some fake author", 42, "A dummy book that by ISB conflicts with HP and the deathly hallows.");
+        BookDetailsImpl conflictingBook = new BookDetailsImpl(Long.valueOf("9780739360385"), "Some fake title", "Some fake author", 42, "A dummy book that by ISB conflicts with HP and the deathly hallows.");
         int assortmentSizeBeforeAdding = assortment.getEntireAssortment().size();
 
         assortment.addBookToAssortment(conflictingBook);

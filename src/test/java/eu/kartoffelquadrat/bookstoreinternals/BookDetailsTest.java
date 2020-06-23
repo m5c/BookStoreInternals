@@ -12,7 +12,7 @@ public class BookDetailsTest {
     {
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
-        BookDetails details = AssortmentImpl.getInstance().getBookDetails(harryPotterIsbn);
+        BookDetailsImpl details = AssortmentImpl.getInstance().getBookDetails(harryPotterIsbn);
 
         assert details.getAuthor().equals("J.K.Rowling");
         assert details.getIsbn() == harryPotterIsbn;

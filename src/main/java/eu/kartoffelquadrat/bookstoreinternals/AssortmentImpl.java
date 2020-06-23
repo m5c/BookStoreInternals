@@ -10,7 +10,7 @@ import java.util.Map;
 public class AssortmentImpl implements Assortment {
 
     private static Assortment singletonReference = null;
-    Map<Long, BookDetails> assortmentMap;
+    Map<Long, BookDetailsImpl> assortmentMap;
 
     /**
      * Public default constructor for frameworks that automatically initialize beans as singletons.
@@ -27,7 +27,7 @@ public class AssortmentImpl implements Assortment {
      */
     private AssortmentImpl(boolean populate) {
 
-        assortmentMap = new LinkedHashMap<Long, BookDetails>();
+        assortmentMap = new LinkedHashMap<Long, BookDetailsImpl>();
 
         if (populate) {
             populateWithDummyData();
@@ -45,12 +45,12 @@ public class AssortmentImpl implements Assortment {
         return assortmentMap.keySet();
     }
 
-    public BookDetails getBookDetails(Long isbn) {
+    public BookDetailsImpl getBookDetails(Long isbn) {
         return assortmentMap.get(isbn);
     }
 
     @Override
-    public void addBookToAssortment(BookDetails bookDetails) {
+    public void addBookToAssortment(BookDetailsImpl bookDetails) {
         if(assortmentMap.containsKey(bookDetails.getIsbn()))
             throw new RuntimeException("Book can not be indexed, the ISBN conflicts to an existing book.");
 
@@ -73,7 +73,7 @@ public class AssortmentImpl implements Assortment {
     public String toString()
     {
         StringBuilder sb = new StringBuilder("\n **************\n * Assortment * \n **************\n");
-        for(BookDetails details: assortmentMap.values())
+        for(BookDetailsImpl details: assortmentMap.values())
         {
             sb.append(details);
         }
