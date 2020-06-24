@@ -15,9 +15,8 @@ public class GlobalStockImpl implements GlobalStock {
     /**
      * Public default constructor for frameworks that automatically initialize beans as singletons.
      */
-    public GlobalStockImpl() {
-        populateWithDummyData();
-    }
+    public GlobalStockImpl() {}
+
 
     /**
      * Default constructor adds dummy data to the "in-ram DB"
@@ -25,7 +24,7 @@ public class GlobalStockImpl implements GlobalStock {
      * @param populate flag causes the global stock to be initialized with dummy data, if set to true
      */
     private GlobalStockImpl(boolean populate) {
-        stocksPerCity = new LinkedHashMap<String, LocalStock>();
+        stocksPerCity = new LinkedHashMap<>();
 
         if (populate) {
             populateWithDummyData();

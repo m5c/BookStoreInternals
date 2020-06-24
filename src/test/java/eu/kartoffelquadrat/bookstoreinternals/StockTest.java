@@ -35,6 +35,19 @@ public class StockTest {
     }
 
     /**
+     * Try to get the list of all cities that have a local stock
+     */
+    @Test
+    public void testGetAllStoreLocations()
+    {
+        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        Collection<String> locations = globalStock.getStoreLocations();
+
+        assert locations.size() == 4;
+        assert locations.contains("Lyon");
+    }
+
+    /**
      * Try write access on a city that does not exist.
      */
     @Test(expected = RuntimeException.class)
@@ -81,5 +94,14 @@ public class StockTest {
         assert !cities.isEmpty();
         assert cities.size() == 4;
         assert cities.contains("Lyon");
+    }
+
+    /**
+     * Default contructor test
+     */
+    @Test
+    public void testDefaultConstructor()
+    {
+        GlobalStock gs = new GlobalStockImpl();
     }
 }

@@ -3,7 +3,7 @@
 Server side java code of a fake Book-Store for academic case studies.
 
 ![version](https://img.shields.io/badge/version-1.0-brightgreen)
-![coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)
 ![building](https://img.shields.io/badge/build-passing-brightgreen)
 
 ## About
