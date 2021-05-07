@@ -28,6 +28,8 @@ public interface Assortment {
 
     /**
      * Indexes a new book. The isbn of the bookDetails parameter bean must not conflict with an existing book.
+     *
+     * @param bookDetails for the exact data of the book to be added to the assortment.
      */
     void addBookToAssortment(BookDetailsImpl bookDetails);
 }
