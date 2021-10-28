@@ -8,8 +8,7 @@ import org.junit.Test;
 public class BookDetailsTest {
 
     @Test
-    public void verifyAllBookDetails()
-    {
+    public void verifyAllBookDetails() {
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
         BookDetailsImpl details = AssortmentImpl.getInstance().getBookDetails(harryPotterIsbn);
@@ -19,5 +18,10 @@ public class BookDetailsTest {
         assert details.getTitle().equals("Harry Potter and the deathly hallows");
         assert details.getPriceInCents() == 5450;
         assert !details.getBookAbstract().trim().isEmpty();
+    }
+
+    @Test
+    public void defaultConstructor() {
+        BookDetailsImpl bd = new BookDetailsImpl();
     }
 }

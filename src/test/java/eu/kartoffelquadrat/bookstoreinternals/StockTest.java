@@ -15,7 +15,7 @@ public class StockTest {
 
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         globalStock.setStock("Lyon", harryPotterIsbn, 100);
         int stock = globalStock.getStock("Lyon", harryPotterIsbn);
 
@@ -24,13 +24,13 @@ public class StockTest {
 
     @Test(expected = RuntimeException.class)
     public void testInvalidIsbnWriteAccess() {
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         globalStock.setStock("Lyon", Long.valueOf("12341234"), 100);
     }
 
     @Test(expected = RuntimeException.class)
     public void testInvalidIsbnReadAccess() {
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         globalStock.getStock("Lyon", Long.valueOf("43214321"));
     }
 
@@ -40,7 +40,7 @@ public class StockTest {
     @Test
     public void testGetAllStoreLocations()
     {
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         Collection<String> locations = globalStock.getStoreLocations();
 
         assert locations.size() == 4;
@@ -55,7 +55,7 @@ public class StockTest {
 
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         globalStock.setStock("Bielefeld", harryPotterIsbn, 100);
     }
 
@@ -67,7 +67,7 @@ public class StockTest {
 
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         globalStock.getStock("Bielefeld", harryPotterIsbn);
     }
 
@@ -77,7 +77,7 @@ public class StockTest {
     @Test
     public void testFullLocalStockAccess()
     {
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         Map<Long, Integer> lyonStock = globalStock.getEntireStoreStock("Lyon");
         assert lyonStock != null;
         assert lyonStock.size() > 0;
@@ -89,7 +89,7 @@ public class StockTest {
     @Test
     public void testGetAllLocations()
     {
-        GlobalStock globalStock = GlobalStockImpl.getInstance();
+        GlobalStock globalStock = new GlobalStockImpl();
         Collection<String> cities = globalStock.getStoreLocations();
         assert !cities.isEmpty();
         assert cities.size() == 4;
@@ -97,11 +97,20 @@ public class StockTest {
     }
 
     /**
-     * Default contructor test
+     * Default constructor test
      */
     @Test
     public void testDefaultConstructor()
     {
         GlobalStock gs = new GlobalStockImpl();
+    }
+
+    /**
+     * Singleton constructor test
+     */
+    @Test
+    public void testSingleton()
+    {
+        GlobalStock gs = GlobalStockImpl.getInstance();
     }
 }
