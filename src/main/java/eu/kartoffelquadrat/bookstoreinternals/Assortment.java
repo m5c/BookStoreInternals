@@ -3,8 +3,7 @@ package eu.kartoffelquadrat.bookstoreinternals;
 import java.util.Collection;
 
 /**
- * A DAO for indexed books. There can only be one Assortment. Assortment implementations should not have a public
- * constructor, only be accessed as a singleton.
+ * Represents the catalogue of all indexed books.
  *
  * @author Maximilian Schiedermeier
  */

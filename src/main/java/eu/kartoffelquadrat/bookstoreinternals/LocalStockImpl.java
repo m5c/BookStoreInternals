@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Collections;
 
 /**
+ * Implementation for the LocalStock interface. Acts as DAO.
+ *
  * @author Maximilian Schiedermeier
  */
 public class LocalStockImpl implements LocalStock {

@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * Implementation of the Assortment interface. Acts as DAO.
+ *
  * @author Maximilian Schiedermeier
  */
 public class AssortmentImpl implements Assortment {
@@ -34,6 +36,11 @@ public class AssortmentImpl implements Assortment {
         }
     }
 
+    /**
+     * Singleton pattern instance retriever. Always returns the same instance.
+     *
+     * @return the one and only Assortment instance.
+     */
     public static Assortment getInstance() {
         if (singletonReference == null)
             singletonReference = new AssortmentImpl(true);
@@ -49,9 +56,14 @@ public class AssortmentImpl implements Assortment {
         return assortmentMap.get(isbn);
     }
 
+    /**
+     * Adds a book to the assortment.
+     *
+     * @param bookDetails for the exact data of the book to be added to the assortment.
+     */
     @Override
     public void addBookToAssortment(BookDetailsImpl bookDetails) {
-        if(assortmentMap.containsKey(bookDetails.getIsbn()))
+        if (assortmentMap.containsKey(bookDetails.getIsbn()))
             throw new RuntimeException("Book can not be indexed, the ISBN conflicts to an existing book.");
 
         assortmentMap.put(bookDetails.getIsbn(), bookDetails);
@@ -69,12 +81,15 @@ public class AssortmentImpl implements Assortment {
 
     }
 
+    /**
+     * Converts the current object state to a human readable String.
+     *
+     * @return current state as string.
+     */
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder sb = new StringBuilder("\n **************\n * Assortment * \n **************\n");
-        for(BookDetailsImpl details: assortmentMap.values())
-        {
+        for (BookDetailsImpl details : assortmentMap.values()) {
             sb.append(details);
         }
         return sb.toString();

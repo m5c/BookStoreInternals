@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * DAO for comments on books. Singleton.
+ * Implementation for the Comments interface. Acts as DAO.
  *
  * @author Maximilian Schiedermeier
  */

@@ -3,8 +3,7 @@ package eu.kartoffelquadrat.bookstoreinternals;
 import java.util.Map;
 
 /**
- * A DAO for book comments. There can only be one Comments entity. Comments implementations should not have a public
- * constructor, only be accessed as a singleton.
+ * Represents all Comments of all Books.
  *
  * @author Maximilian Schiedermeier
  */

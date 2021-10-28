@@ -10,6 +10,9 @@ import java.util.Map;
  */
 public class StockTest {
 
+    /**
+     * Try to modify the amount of copies on store for a given book.
+     */
     @Test
     public void testUpdateStock() {
 
@@ -22,12 +25,18 @@ public class StockTest {
         assert stock == 100;
     }
 
+    /**
+     * Test write access to a book that is not indexed by ISBN.
+     */
     @Test(expected = RuntimeException.class)
     public void testInvalidIsbnWriteAccess() {
         GlobalStock globalStock = new GlobalStockImpl();
         globalStock.setStock("Lyon", Long.valueOf("12341234"), 100);
     }
 
+    /**
+     * Test read access to a book that is not indexed by ISBN.
+     */
     @Test(expected = RuntimeException.class)
     public void testInvalidIsbnReadAccess() {
         GlobalStock globalStock = new GlobalStockImpl();

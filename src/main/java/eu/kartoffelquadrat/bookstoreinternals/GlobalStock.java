@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * A DAO for the book stock in various locations.
+ * Represents the united stock of all local BookStores.
  *
  * @author Maximilian Schiedermeier
  */

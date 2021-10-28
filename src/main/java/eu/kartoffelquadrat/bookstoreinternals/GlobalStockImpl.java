@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * Implementation for the GlobalStock interface. Acts as DAO.
+ *
  * @author Maximilian Schiedermeier
  */
 public class GlobalStockImpl implements GlobalStock {

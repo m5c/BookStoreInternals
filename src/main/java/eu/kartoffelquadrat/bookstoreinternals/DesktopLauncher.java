@@ -10,12 +10,17 @@ public class DesktopLauncher {
     /**
      * The desktop launcher has no relevance for a REST case study. However it can be run to test the initial population
      * of the dummy database.
+     *
+     * @param args not used. No runtime parameters expected.
      */
     public static void main(String[] args) {
 
         printData();
     }
 
+    /**
+     * Prints the current data state to console.
+     */
     public static void printData() {
         Assortment assortment = AssortmentImpl.getInstance();
         Comments comments = CommentsImpl.getInstance();

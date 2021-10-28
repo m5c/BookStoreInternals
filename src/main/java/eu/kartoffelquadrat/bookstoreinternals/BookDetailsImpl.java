@@ -1,6 +1,8 @@
 package eu.kartoffelquadrat.bookstoreinternals;
 
 /**
+ * Implementation of the BookDetails interface. Acts as DAO.
+ *
  * @author Maximilian Schiedermeier
  */
 public class BookDetailsImpl {

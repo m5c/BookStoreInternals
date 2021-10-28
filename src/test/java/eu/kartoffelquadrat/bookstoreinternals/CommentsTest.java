@@ -1,6 +1,5 @@
 package eu.kartoffelquadrat.bookstoreinternals;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Map;
