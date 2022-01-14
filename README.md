@@ -47,6 +47,22 @@ On execution, the bookstore will simply print a listing of persisted initial dum
  3. Run the jar:  
  ```java -jar target/BookStore.jar```
 
+## Invokation
+
+If you want to use the bookstore as dependency:
+
+ * First compile it with:  
+```mvn clean install```
+
+ * Then reference it, using this dependency block  
+```xml
+   <dependency>
+       <groupId>eu.kartoffelquadrat</groupId>
+       <artifactId>bookstoreinternals</artifactId>
+       <version>1.1.0</version>
+   </dependency>
+```
+
 ## Contact / Pull Requests
 
  * Author: Maximilian Schiedermeier ![email](email.png)
