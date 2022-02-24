@@ -59,7 +59,7 @@ If you want to use the bookstore as dependency:
    <dependency>
        <groupId>eu.kartoffelquadrat</groupId>
        <artifactId>bookstoreinternals</artifactId>
-       <version>1.1.0</version>
+       <version>1.2</version>
    </dependency>
 ```
 
