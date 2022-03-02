@@ -61,6 +61,7 @@
                     <compilerArgs>
                     <arg>-parameters</arg>
                     <arg>-g:source,lines,vars</arg>
+			</compilerArgs>
                 </configuration>
             </plugin>
 
