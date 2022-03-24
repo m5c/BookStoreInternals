@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Represents the united stock of all local BookStores.
+ * Represents the stock levels of all local store branches.
  *
  * @author Maximilian Schiedermeier
  */

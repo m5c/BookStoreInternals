@@ -1,15 +1,14 @@
 package eu.kartoffelquadrat.bookstoreinternals;
 
 /**
- * This class is to demo / test the functionality of the bookstore. It has no importance in a microservice context.
+ * Legacy launcher class to demonstrate access and functionality of the bookstore.
  *
  * @author Maximilian Schiedermeier
  */
 public class DesktopLauncher {
 
     /**
-     * The desktop launcher has no relevance for a REST case study. However it can be run to test the initial population
-     * of the dummy database.
+     * Creates a BookStore instance and prints the default data to screen.
      *
      * @param args not used. No runtime parameters expected.
      */
@@ -19,7 +18,7 @@ public class DesktopLauncher {
     }
 
     /**
-     * Prints the current data state to console.
+     * Creates a BookStore instance and prints the default data to screen.
      */
     public static void printData() {
         Assortment assortment = AssortmentImpl.getInstance();

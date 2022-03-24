@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Implementation of the Assortment interface. Acts as DAO.
+ * Implementation of the Assortment interface.
  *
  * @author Maximilian Schiedermeier
  */
@@ -48,16 +48,30 @@ public class AssortmentImpl implements Assortment {
         return singletonReference;
     }
 
+    /**
+     * Retrieves all books that are indexed, no matter if they are in stock somewhere
+     * or not.
+     *
+     * @return the list off registered isbns.
+     */
+    @Override
     public Collection<Long> getEntireAssortment() {
         return assortmentMap.keySet();
     }
 
+    /**
+     * Retrieved book details for a specific book, identified by isbn.
+     *
+     * @param isbn for the identifier of the book in question.
+     * @return A BookDetail object, containing the static metadata of the requested book.
+     */
+    @Override
     public BookDetailsImpl getBookDetails(Long isbn) {
         return assortmentMap.get(isbn);
     }
 
     /**
-     * Adds a book to the assortment.
+     * Indexes a new book. The isbn of the bookDetails parameter bean must not conflict with an existing book.
      *
      * @param bookDetails for the exact data of the book to be added to the assortment.
      */
@@ -82,9 +96,9 @@ public class AssortmentImpl implements Assortment {
     }
 
     /**
-     * Converts the current object state to a human readable String.
+     * Converts the current assortment state to a human readable String.
      *
-     * @return current state as string.
+     * @return current assortment as string.
      */
     @Override
     public String toString() {

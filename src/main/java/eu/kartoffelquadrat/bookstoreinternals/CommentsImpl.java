@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Implementation for the Comments interface. Acts as DAO.
+ * Full implementation Implementation of the Comments interface.
  *
  * @author Maximilian Schiedermeier
  */
@@ -33,6 +33,11 @@ public class CommentsImpl implements Comments {
             populateWithDummyData();
     }
 
+    /**
+     * Singleton access for CommentsImpl.
+     *
+     * @return the one ond only CommentsImpl instance.
+     */
     public static Comments getInstance() {
         if (singletonReference == null)
             singletonReference = new CommentsImpl(true);
@@ -40,20 +45,31 @@ public class CommentsImpl implements Comments {
         return singletonReference;
     }
 
+    /**
+     * Returns all comments stored for a specific book.
+     *
+     * @param isbn as the identifier of the book in question
+     * @return a map of commentIds to comments.
+     */
+    @Override
     public Map<Long, String> getAllCommentsForBook(long isbn) {
 
         // If there are no comments yet, return new empty map.
         if (!commentsByIsbn.containsKey(isbn))
-            return new LinkedHashMap<Long, String>();
+            return new LinkedHashMap<>();
 
         return Collections.unmodifiableMap(
                 commentsByIsbn.get(isbn));
     }
 
-    /*
-     * Although comments are indexed by IDs, the creation of a new comment does not require an ID, for the ID is a
-     * dynamic / non-global / internal ID.
+    /**
+     * Add a comment to an existing book. Comments for non-indexed books (isbn not listed in assortmentMap) are
+     * rejected.
+     *
+     * @param isbn    as the identifier of the book in question
+     * @param comment as a string representing the comment to be added
      */
+    @Override
     public void addComment(long isbn, String comment) {
 
         // Verify the comment is not empty
@@ -66,12 +82,19 @@ public class CommentsImpl implements Comments {
 
         // Create new map for isbn, if this is the first comment
         if (!commentsByIsbn.containsKey(isbn))
-            commentsByIsbn.put(isbn, new LinkedHashMap<Long, String>());
+            commentsByIsbn.put(isbn, new LinkedHashMap<>());
 
         // Actually add the comment
         commentsByIsbn.get(isbn).put(generateCommentId(isbn), comment);
     }
 
+    /**
+     * Removes a previously stored comment for a specific book
+     *
+     * @param isbn      as the identifier of the book in question
+     * @param commentId as the id of the comment to be removed
+     */
+    @Override
     public void deleteComment(long isbn, long commentId) {
 
         if (!commentsByIsbn.containsKey(isbn))
@@ -83,6 +106,12 @@ public class CommentsImpl implements Comments {
         commentsByIsbn.get(isbn).remove(commentId);
     }
 
+    /**
+     * Removes all previously stored comments for a specific book
+     *
+     * @param isbn as the identifier of the book in question
+     */
+    @Override
     public void removeAllCommentsForBook(long isbn) {
 
         if (!commentsByIsbn.containsKey(isbn))
@@ -91,6 +120,14 @@ public class CommentsImpl implements Comments {
         commentsByIsbn.remove(isbn);
     }
 
+    /**
+     * Overwrites an already existing specific comment for a specific book.
+     *
+     * @param isbn           as the identifier of the book in question
+     * @param commentId      as the id of the comment to be overwritten
+     * @param updatedComment as a string representing the updated comment
+     */
+    @Override
     public void editComment(long isbn, long commentId, String updatedComment) {
 
         // Verify the comment is not empty
@@ -111,12 +148,12 @@ public class CommentsImpl implements Comments {
      */
     private void populateWithDummyData() {
 
-        addComment(Long.valueOf("9780739360385"), "Amazing book!");
-        addComment(Long.valueOf("9780739360385"), "A must read!");
-        addComment(Long.valueOf("9780553382563"), "A classic!");
-        addComment(Long.valueOf("9780553382563"), "Would read it again.");
-        addComment(Long.valueOf("9781977791122"), "Love it!");
-        addComment(Long.valueOf("9780262538473"), "Fantastic!");
+        addComment(Long.parseLong("9780739360385"), "Amazing book!");
+        addComment(Long.parseLong("9780739360385"), "A must read!");
+        addComment(Long.parseLong("9780553382563"), "A classic!");
+        addComment(Long.parseLong("9780553382563"), "Would read it again.");
+        addComment(Long.parseLong("9781977791122"), "Love it!");
+        addComment(Long.parseLong("9780262538473"), "Fantastic!");
     }
 
     /**
@@ -134,15 +171,22 @@ public class CommentsImpl implements Comments {
             return randomLong;
     }
 
-    public String toString()
-    {
+    /**
+     * Helper method to convert all stored comments into human readable format.
+     *
+     * @return A nicely formatted string listing all comments for all books.
+     */
+    @Override
+    public String toString() {
         StringBuilder sb = new StringBuilder("\n **************\n * Comments * \n **************\n");
-        for(long isbn: commentsByIsbn.keySet())
-        {
-            sb.append(isbn+":\n");
-            for(long commentId : commentsByIsbn.get(isbn).keySet())
-            {
-                sb.append(" > "+commentId + ": "+commentsByIsbn.get(isbn).get(commentId)+"\n");
+        for (long isbn : commentsByIsbn.keySet()) {
+            sb.append(isbn).append(":\n");
+            for (long commentId : commentsByIsbn.get(isbn).keySet()) {
+                sb.append(" > ")
+                        .append(commentId)
+                        .append(": ")
+                        .append(commentsByIsbn.get(isbn).get(commentId))
+                        .append("\n");
             }
         }
         return sb.toString();

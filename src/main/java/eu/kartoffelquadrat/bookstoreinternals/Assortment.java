@@ -10,10 +10,10 @@ import java.util.Collection;
 public interface Assortment {
 
     /**
-     * Retrieves all books that are indexed (that a description is knwon for), no matter if they are in stock somewhere
+     * Retrieves all books that are indexed, no matter if they are in stock somewhere
      * or not.
      *
-     * @return the list off known isbns.
+     * @return the list off registered isbns.
      */
     Collection<Long> getEntireAssortment();
 

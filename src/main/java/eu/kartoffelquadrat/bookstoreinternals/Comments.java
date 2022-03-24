@@ -3,7 +3,7 @@ package eu.kartoffelquadrat.bookstoreinternals;
 import java.util.Map;
 
 /**
- * Represents all Comments of all Books.
+ * Offers access to all Comments of all Books.
  *
  * @author Maximilian Schiedermeier
  */

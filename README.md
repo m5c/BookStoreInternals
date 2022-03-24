@@ -2,8 +2,8 @@
 
 Server side java code of a fake Book-Store for academic case studies.
 
-![version](https://img.shields.io/badge/version-1.2-brightgreen)
-![coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)
+![version](https://img.shields.io/badge/version-1.3-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-97%25-brightgreen)
 ![building](https://img.shields.io/badge/build-passing-brightgreen)
 
 ## About
