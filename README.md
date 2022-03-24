@@ -1,6 +1,6 @@
 # Book Store
 
-Server side java code of a fake Book-Store for academic case studies.
+Legacy java code of a playground Book-Store for academic case studies.
 
 ![version](https://img.shields.io/badge/version-1.3-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-97%25-brightgreen)
