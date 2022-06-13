@@ -22,17 +22,14 @@ public class LocalStockImpl implements LocalStock {
     }
 
     /**
-     * Tells the amount in stock for a given book id (isbn).
+     * Tells the amount in stock for a given book id (isbn). There is no effective check if that book is actually known
+     * to the assortment.
      *
-     * @param isbn as identifier of the book in question
+     * @param isbn as identifier of the book in question.
      * @return the amount in stock for the given book.
      */
     @Override
     public int getAmount(long isbn) {
-
-        // Reject queries for non-indexed books
-        if (!AssortmentImpl.getInstance().getEntireAssortment().contains(isbn))
-            throw new RuntimeException("Stock queries are only allowed for indexed books.");
 
         if (!stockByBook.containsKey(isbn))
             return 0;
@@ -41,17 +38,14 @@ public class LocalStockImpl implements LocalStock {
     }
 
     /**
-     * Update the amount of books in local stock, for a given book
+     * Update the amount of books in local stock, for a given book. There is no effective check if that book is actually
+     * known to the assortment.
      *
      * @param isbn   as identifies of the book in question
      * @param amount as the new amount in stock for the book in question
      */
     @Override
     public void setAmount(long isbn, int amount) {
-
-        // Reject queries for non-indexed books
-        if (!AssortmentImpl.getInstance().getEntireAssortment().contains(isbn))
-            throw new RuntimeException("Stock updates are only allowed for indexed books.");
 
         stockByBook.put(isbn, amount);
     }

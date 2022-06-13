@@ -26,18 +26,20 @@ public class StockTest {
     }
 
     /**
-     * Test write access to a book that is not indexed by ISBN.
+     * Test write access to a book that is not indexed by ISBN. Although a real bookstore should not allow this, for
+     * simplicity we do not prevent setting stock for non-indexed books.
      */
-    @Test(expected = RuntimeException.class)
+    @Test
     public void testInvalidIsbnWriteAccess() {
         GlobalStock globalStock = new GlobalStockImpl();
         globalStock.setStock("Lyon", Long.valueOf("12341234"), 100);
     }
 
     /**
-     * Test read access to a book that is not indexed by ISBN.
+     * Test read access to a book that is not indexed by ISBN. Although a real bookstore should not allow this, for
+     * simplicity we do not prevent looking up stock for non-indexed books.
      */
-    @Test(expected = RuntimeException.class)
+    @Test
     public void testInvalidIsbnReadAccess() {
         GlobalStock globalStock = new GlobalStockImpl();
         globalStock.getStock("Lyon", Long.valueOf("43214321"));
@@ -47,8 +49,7 @@ public class StockTest {
      * Try to get the list of all cities that have a local stock
      */
     @Test
-    public void testGetAllStoreLocations()
-    {
+    public void testGetAllStoreLocations() {
         GlobalStock globalStock = new GlobalStockImpl();
         Collection<String> locations = globalStock.getStoreLocations();
 
@@ -84,8 +85,7 @@ public class StockTest {
      * Try to get full stock of a local store.
      */
     @Test
-    public void testFullLocalStockAccess()
-    {
+    public void testFullLocalStockAccess() {
         GlobalStock globalStock = new GlobalStockImpl();
         Map<Long, Integer> lyonStock = globalStock.getEntireStoreStock("Lyon");
         assert lyonStock != null;
@@ -96,8 +96,7 @@ public class StockTest {
      * Try to get a list of all cities that have something in stock
      */
     @Test
-    public void testGetAllLocations()
-    {
+    public void testGetAllLocations() {
         GlobalStock globalStock = new GlobalStockImpl();
         Collection<String> cities = globalStock.getStoreLocations();
         assert !cities.isEmpty();
@@ -109,8 +108,7 @@ public class StockTest {
      * Default constructor test
      */
     @Test
-    public void testDefaultConstructor()
-    {
+    public void testDefaultConstructor() {
         GlobalStock gs = new GlobalStockImpl();
     }
 
@@ -118,8 +116,7 @@ public class StockTest {
      * Singleton constructor test
      */
     @Test
-    public void testSingleton()
-    {
+    public void testSingleton() {
         GlobalStock gs = GlobalStockImpl.getInstance();
     }
 }
