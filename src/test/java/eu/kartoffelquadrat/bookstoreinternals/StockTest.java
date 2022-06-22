@@ -2,6 +2,8 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -18,7 +20,7 @@ public class StockTest {
 
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         globalStock.setStock("Lyon", harryPotterIsbn, 100);
         int stock = globalStock.getStock("Lyon", harryPotterIsbn);
 
@@ -31,7 +33,7 @@ public class StockTest {
      */
     @Test
     public void testInvalidIsbnWriteAccess() {
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         globalStock.setStock("Lyon", Long.valueOf("12341234"), 100);
     }
 
@@ -41,7 +43,7 @@ public class StockTest {
      */
     @Test
     public void testInvalidIsbnReadAccess() {
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         globalStock.getStock("Lyon", Long.valueOf("43214321"));
     }
 
@@ -50,7 +52,7 @@ public class StockTest {
      */
     @Test
     public void testGetAllStoreLocations() {
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         Collection<String> locations = globalStock.getStoreLocations();
 
         assert locations.size() == 4;
@@ -65,7 +67,7 @@ public class StockTest {
 
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         globalStock.setStock("Bielefeld", harryPotterIsbn, 100);
     }
 
@@ -77,7 +79,7 @@ public class StockTest {
 
         long harryPotterIsbn = Long.valueOf("9780739360385");
 
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         globalStock.getStock("Bielefeld", harryPotterIsbn);
     }
 
@@ -86,7 +88,7 @@ public class StockTest {
      */
     @Test
     public void testFullLocalStockAccess() {
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         Map<Long, Integer> lyonStock = globalStock.getEntireStoreStock("Lyon");
         assert lyonStock != null;
         assert lyonStock.size() > 0;
@@ -97,7 +99,7 @@ public class StockTest {
      */
     @Test
     public void testGetAllLocations() {
-        GlobalStock globalStock = new GlobalStockImpl();
+        GlobalStock globalStock = getNewInstance();
         Collection<String> cities = globalStock.getStoreLocations();
         assert !cities.isEmpty();
         assert cities.size() == 4;
@@ -105,11 +107,11 @@ public class StockTest {
     }
 
     /**
-     * Default constructor test
+     * Private constructor test
      */
     @Test
     public void testDefaultConstructor() {
-        GlobalStock gs = new GlobalStockImpl();
+        GlobalStock gs = getNewInstance();
     }
 
     /**
@@ -118,5 +120,22 @@ public class StockTest {
     @Test
     public void testSingleton() {
         GlobalStock gs = GlobalStockImpl.getInstance();
+    }
+
+    /**
+     * Helper method to access the private default constructor. This test should not operate on the singleton's
+     * getInstance method, since the tests may alter the bean state and therefore cannot be executed in arbitrary order.
+     * To avoid this we use this method instead to ensure individual tests operate on isolated instances.
+     *
+     * @return a guaranteed new instance of GlobalStockImpl
+     */
+    private GlobalStockImpl getNewInstance() {
+        try {
+            Constructor<GlobalStockImpl> constructor = GlobalStockImpl.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            return constructor.newInstance();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException("Something went wrong creating a NEW instance of CommentsImpl via reflection");
+        }
     }
 }

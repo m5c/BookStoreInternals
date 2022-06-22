@@ -2,6 +2,8 @@ package eu.kartoffelquadrat.bookstoreinternals;
 
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 /**
