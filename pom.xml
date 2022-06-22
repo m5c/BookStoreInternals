@@ -4,7 +4,7 @@
     <groupId>eu.kartoffelquadrat</groupId>
     <artifactId>bookstoreinternals</artifactId>
     <packaging>jar</packaging>
-    <version>1.4</version>
+    <version>1.5</version>
     <name>bookstoreinternals</name>
     <url>http://maven.apache.org</url>
 
