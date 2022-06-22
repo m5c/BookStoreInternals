@@ -15,25 +15,12 @@ public class AssortmentImpl implements Assortment {
     Map<Long, BookDetailsImpl> assortmentMap;
 
     /**
-     * Public default constructor for frameworks that automatically initialize beans as singletons.
+     * Private constructor for singleton pattern. Implicitly populates the assortmentMap map, so that the one and only
+     * instance of this class has some data to work with.
      */
-    public AssortmentImpl() {
-
-        this(true);
-    }
-
-    /**
-     * Default constructor adds dummy data to the "in-ram DB"
-     *
-     * @param populate flag causes the assortment to be initialized with dummy data, if set to true
-     */
-    private AssortmentImpl(boolean populate) {
-
+    private AssortmentImpl() {
         assortmentMap = new LinkedHashMap<Long, BookDetailsImpl>();
-
-        if (populate) {
-            populateWithDummyData();
-        }
+        populateWithDummyData();
     }
 
     /**
@@ -43,14 +30,13 @@ public class AssortmentImpl implements Assortment {
      */
     public static Assortment getInstance() {
         if (singletonReference == null)
-            singletonReference = new AssortmentImpl(true);
+            singletonReference = new AssortmentImpl();
 
         return singletonReference;
     }
 
     /**
-     * Retrieves all books that are indexed, no matter if they are in stock somewhere
-     * or not.
+     * Retrieves all books that are indexed, no matter if they are in stock somewhere or not.
      *
      * @return the list off registered isbns.
      */

@@ -15,22 +15,13 @@ public class CommentsImpl implements Comments {
     Map<Long, Map<Long, String>> commentsByIsbn;
 
     /**
-     * Public default constructor for frameworks that automatically initialize beans as singletons.
+     * Private constructor for singleton pattern. Implicitly populates the commentsByIsbn map, so that the one and only
+     * instance of this class has some data to work with.
      */
     public CommentsImpl() {
-        this(true);
-    }
-
-    /**
-     * Private constructor for singleton pattern.
-     *
-     * @param populate flag causes the comments to initialized with dummy data, if set to true
-     */
-    private CommentsImpl(boolean populate) {
 
         commentsByIsbn = new LinkedHashMap<>();
-        if (populate)
-            populateWithDummyData();
+        populateWithDummyData();
     }
 
     /**
@@ -40,7 +31,7 @@ public class CommentsImpl implements Comments {
      */
     public static Comments getInstance() {
         if (singletonReference == null)
-            singletonReference = new CommentsImpl(true);
+            singletonReference = new CommentsImpl();
 
         return singletonReference;
     }
