@@ -18,7 +18,7 @@ public class CommentsImpl implements Comments {
      * Private constructor for singleton pattern. Implicitly populates the commentsByIsbn map, so that the one and only
      * instance of this class has some data to work with.
      */
-    public CommentsImpl() {
+    private CommentsImpl() {
 
         commentsByIsbn = new LinkedHashMap<>();
         populateWithDummyData();
