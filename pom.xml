@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.kartoffelquadrat</groupId>
@@ -12,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-	<source>8</source>
+        <source>8</source>
     </properties>
 
 
@@ -42,6 +43,12 @@
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>10.3.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -49,30 +56,8 @@
         <finalName>BookStore</finalName>
 
         <plugins>
-            <!-- set compiler version -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <!-- Inlcude parameter names so artifacts from this library are easier to acces by reflection-->
-                    <fork>true</fork>
-                    <compilerArgs>
-                    <arg>-parameters</arg>
-                    <arg>-g:source,lines,vars</arg>
-			</compilerArgs>
-                </configuration>
-            </plugin>
 
-            <!-- enforce passing junit tests as build precondition -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-
-            <!-- specify main class for exec goal -->
+            <!-- Specify main class for exec goal -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -97,22 +82,30 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>eu.kartoffelquadrat.bookstoreinternals.DesktopLauncher</mainClass>
+                            <mainClass>eu.kartoffelquadrat.bookstoreinternals.DesktopLauncher
+                            </mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
 
-            <!-- add sources -->
+            <!-- Plugin to refuse build in case of checkstyle violations-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>attach-sources</id>
+                        <id>validate</id>
+                        <phase>validate</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -123,6 +116,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
+                <configuration>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                    <reportOutputDirectory>${project.reporting.outputDirectory}/docs
+                    </reportOutputDirectory>
+                    <destDir>docs</destDir>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>

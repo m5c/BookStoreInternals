@@ -39,9 +39,9 @@ public interface GlobalStock {
     /**
      * Returns the entire stock of a local store.
      *
-     * @param city   for the city of interest
-     *
-     * @return a map holding for each book (by isbn) the amount of books in stock at the specified location.
+     * @param city for the city of interest
+     * @return a map holding for each book (by isbn) the amount of books in stock at the specified
+     * location.
      */
     Map<Long, Integer> getEntireStoreStock(String city);
 

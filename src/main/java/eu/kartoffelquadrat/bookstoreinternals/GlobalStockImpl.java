@@ -15,8 +15,8 @@ public class GlobalStockImpl implements GlobalStock {
     Map<String, LocalStock> stocksPerCity;
 
     /**
-     * Private constructor for singleton pattern. Implicitly populates the stocksPerCity map, so that the one and only
-     * instance of this class has some data to work with.
+     * Private constructor for singleton pattern. Implicitly populates the stocksPerCity map, so that
+     * the one and only instance of this class has some data to work with.
      */
     private GlobalStockImpl() {
 
