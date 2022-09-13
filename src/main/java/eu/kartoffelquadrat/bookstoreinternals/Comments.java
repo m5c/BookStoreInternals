@@ -27,7 +27,7 @@ public interface Comments {
   void addComment(long isbn, String comment);
 
   /**
-   * Removes a previously stored comment for a specific book
+   * Removes a previously stored comment for a specific book.
    *
    * @param isbn      as the identifier of the book in question
    * @param commentId as the id of the comment to be removed
@@ -35,7 +35,7 @@ public interface Comments {
   void deleteComment(long isbn, long commentId);
 
   /**
-   * Removes all previously stored comments for a specific book
+   * Removes all previously stored comments for a specific book.
    *
    * @param isbn as the identifier of the book in question
    */

@@ -31,9 +31,9 @@ public class LocalStockImpl implements LocalStock {
   @Override
   public int getAmount(long isbn) {
 
-      if (!stockByBook.containsKey(isbn)) {
-          return 0;
-      }
+    if (!stockByBook.containsKey(isbn)) {
+      return 0;
+    }
 
     return stockByBook.get(isbn);
   }
@@ -52,7 +52,7 @@ public class LocalStockImpl implements LocalStock {
   }
 
   /**
-   * Returns the entire stock of this location, as an immutable map
+   * Returns the entire stock of this location, as an immutable map.
    *
    * @return a map, where the key is a book isbn and the value the amount in stock for this isbn.
    */
@@ -61,6 +61,12 @@ public class LocalStockImpl implements LocalStock {
     return Collections.unmodifiableMap(stockByBook);
   }
 
+  /**
+   * Overrides default toString method to serialize instances of this class to human readable
+   * string.
+   *
+   * @return Human readable string representation of current object.
+   */
   public String toString() {
     StringBuilder sb = new StringBuilder();
     for (long isbn : stockByBook.keySet()) {
