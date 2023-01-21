@@ -28,11 +28,11 @@ The following scenario / functionality is covered:
 
 ## Documentation
 
- * For a full description of available functionality, read the [JavaDoc](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/package-summary.html)
+ * For a full description of available functionality, read the [JavaDoc](https://m5c.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/package-summary.html)
  * The relevant functionality is exposed by three interfaces:
-    * [```Assortment.java```](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/Assortment.html), to access indexed books / index new books.
-    * [```GlobalStock.java```](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/GlobalStock.html), to query and update the stock of individual agencies.
-    * [```Comments.java```](https://kartoffelquadrat.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/Comments.html), to add delete and edit comments on books.
+    * [```Assortment.java```](https://m5c.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/Assortment.html), to access indexed books / index new books.
+    * [```GlobalStock.java```](https://m5c.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/GlobalStock.html), to query and update the stock of individual agencies.
+    * [```Comments.java```](https://m5c.github.io/BookStoreInternals/eu/kartoffelquadrat/bookstoreinternals/Comments.html), to add delete and edit comments on books.
 
 ## Usage
 
@@ -66,7 +66,7 @@ If you want to use the bookstore as dependency:
 ## Contact / Pull Requests
 
  * Author: Maximilian Schiedermeier ![email](email.png)
- * Github: Kartoffelquadrat
+ * Github: m5c
  * Webpage: https://www.cs.mcgill.ca/~mschie3
  * License: [MIT](https://opensource.org/licenses/MIT)
 
