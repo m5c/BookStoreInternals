@@ -2,7 +2,7 @@
 
 Legacy java code of a playground Book-Store for academic case studies.
 
-![version](https://img.shields.io/badge/version-1.3-brightgreen)
+![version](https://img.shields.io/badge/version-1.5-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-97%25-brightgreen)
 ![building](https://img.shields.io/badge/build-passing-brightgreen)
 
