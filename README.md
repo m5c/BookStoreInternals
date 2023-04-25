@@ -65,7 +65,7 @@ If you want to use the bookstore as dependency:
 
 ## Contact / Pull Requests
 
- * Author: Maximilian Schiedermeier ![email](email.png)
+ * Author: [Maximilian Schiedermeier](mailto:maximilian.schiedermeier@mcgill.ca?subject=BookStoreInternals&body=BookStoreInternals)
  * Github: m5c
  * Webpage: https://www.cs.mcgill.ca/~mschie3
  * License: [MIT](https://opensource.org/licenses/MIT)
