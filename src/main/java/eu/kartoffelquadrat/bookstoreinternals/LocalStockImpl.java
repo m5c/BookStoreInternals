@@ -1,7 +1,9 @@
 package eu.kartoffelquadrat.bookstoreinternals;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -14,11 +16,15 @@ public class LocalStockImpl implements LocalStock {
   // private map to register the amount of book copies in store, per isbn.
   private final Map<Long, Integer> stockByBook;
 
+  // private map to store list of all local store employees.
+  private final Collection<StoreEmployee> employees;
+
   /**
    * Default constructor.
    */
   public LocalStockImpl() {
     stockByBook = new LinkedHashMap<>();
+    employees = new LinkedList<>();
   }
 
   /**
@@ -52,6 +58,29 @@ public class LocalStockImpl implements LocalStock {
   }
 
   /**
+   * Adds a given employee to the store.
+   *
+   * @param employee as the employee to add.
+   */
+  @Override
+  public void addEmployee(StoreEmployee employee) {
+
+    employees.add(employee);
+  }
+
+  /**
+   * Method to look up if an employee with the given name works for this store.
+   *
+   * @param employeeFamilyName as the family name of the employy to check for.
+   * @return true if an employe with this name works for the local store, false otherwise.
+   */
+  @Override
+  public boolean hasEmployee(String employeeFamilyName) {
+    return employees.stream().map(employe -> employe.getName()).toList()
+        .contains(employeeFamilyName);
+  }
+
+  /**
    * Returns the entire stock of this location, as an immutable map.
    *
    * @return a map, where the key is a book isbn and the value the amount in stock for this isbn.
@@ -70,11 +99,7 @@ public class LocalStockImpl implements LocalStock {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     for (long isbn : stockByBook.keySet()) {
-      sb.append(" > ")
-          .append(isbn)
-          .append(": ")
-          .append(stockByBook.get(isbn))
-          .append("\n");
+      sb.append(" > ").append(isbn).append(": ").append(stockByBook.get(isbn)).append("\n");
     }
     return sb.toString();
   }

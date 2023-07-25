@@ -26,6 +26,10 @@ public interface LocalStock {
    */
   void setAmount(long isbn, int amount);
 
+  void addEmployee(StoreEmployee employee);
+
+  boolean hasEmployee(String employeeFamilyName);
+
   /**
    * Returns the entire stock of this location, as an immutable map.
    *

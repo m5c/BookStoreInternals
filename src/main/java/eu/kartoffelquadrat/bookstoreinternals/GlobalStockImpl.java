@@ -12,7 +12,7 @@ import java.util.Map;
 public class GlobalStockImpl implements GlobalStock {
 
   private static GlobalStock singletonReference;
-  Map<String, LocalStock> stocksPerCity;
+  Map<String, LocalStock> localStocks;
 
   /**
    * Private constructor for singleton pattern. Implicitly populates the stocksPerCity map, so that
@@ -20,7 +20,7 @@ public class GlobalStockImpl implements GlobalStock {
    */
   private GlobalStockImpl() {
 
-    stocksPerCity = new LinkedHashMap<>();
+    localStocks = new LinkedHashMap<>();
     populateWithDummyData();
   }
 
@@ -48,11 +48,11 @@ public class GlobalStockImpl implements GlobalStock {
   @Override
   public int getStock(String city, Long isbn) {
 
-    if (!stocksPerCity.containsKey(city)) {
+    if (!localStocks.containsKey(city)) {
       throw new RuntimeException("Can not lookup amount in stock. No such city: " + city);
     }
 
-    return stocksPerCity.get(city).getAmount(isbn);
+    return localStocks.get(city).getAmount(isbn);
   }
 
   /**
@@ -65,11 +65,11 @@ public class GlobalStockImpl implements GlobalStock {
   @Override
   public void setStock(String city, Long isbn, Integer amount) {
 
-    if (!stocksPerCity.containsKey(city)) {
+    if (!localStocks.containsKey(city)) {
       throw new RuntimeException("Can not update amount in stock. No such city: " + city);
     }
 
-    stocksPerCity.get(city).setAmount(isbn, amount);
+    localStocks.get(city).setAmount(isbn, amount);
   }
 
   /**
@@ -79,7 +79,7 @@ public class GlobalStockImpl implements GlobalStock {
    */
   @Override
   public Collection<String> getStoreLocations() {
-    return stocksPerCity.keySet();
+    return localStocks.keySet();
   }
 
   /**
@@ -90,7 +90,19 @@ public class GlobalStockImpl implements GlobalStock {
    */
   @Override
   public Map<Long, Integer> getEntireStoreStock(String city) {
-    return stocksPerCity.get(city).getEntireStock();
+    return localStocks.get(city).getEntireStock();
+  }
+
+  /**
+   * Helper method to look up if a local stock has a given employee.
+   *
+   * @param city as the location of the local stock store.
+   * @param name as the family name of the employee.
+   * @return true if such an employee works in that city, false otherwise.
+   */
+  @Override
+  public boolean isEmplyed(String city, String name) {
+    return localStocks.get(city).hasEmployee(name);
   }
 
   /**
@@ -100,27 +112,34 @@ public class GlobalStockImpl implements GlobalStock {
   private void populateWithDummyData() {
 
     // Add some locations.
-    stocksPerCity.put("Montréal", new LocalStockImpl());
-    stocksPerCity.put("München", new LocalStockImpl());
-    stocksPerCity.put("Osterhofen", new LocalStockImpl());
-    stocksPerCity.put("Lyon", new LocalStockImpl());
+    localStocks.put("Montréal", new LocalStockImpl());
+    localStocks.put("München", new LocalStockImpl());
+    localStocks.put("Osterhofen", new LocalStockImpl());
+    localStocks.put("Lyon", new LocalStockImpl());
+
+    // Add some employees
+    localStocks.get("Osterhofen").addEmployee(new StoreEmployee("Merkel", "Angela"));
+    localStocks.get("Lyon").addEmployee(new StoreEmployee("Curie", "Marie"));
+    localStocks.get("München").addEmployee(new StoreEmployee("Plank", "Max"));
+    localStocks.get("Montréal").addEmployee(new StoreEmployee("Cohen", "Leonard"));
+
 
     // initialize stock for locations.
-    stocksPerCity.get("Montréal").setAmount(Long.parseLong("9780739360385"), 1);
-    stocksPerCity.get("Montréal").setAmount(Long.parseLong("9781977791122"), 2);
-    stocksPerCity.get("Montréal").setAmount(Long.parseLong("9780262538473"), 3);
+    localStocks.get("Montréal").setAmount(Long.parseLong("9780739360385"), 1);
+    localStocks.get("Montréal").setAmount(Long.parseLong("9781977791122"), 2);
+    localStocks.get("Montréal").setAmount(Long.parseLong("9780262538473"), 3);
 
-    stocksPerCity.get("München").setAmount(Long.parseLong("9780739360385"), 50);
-    stocksPerCity.get("München").setAmount(Long.parseLong("9780553382563"), 2);
-    stocksPerCity.get("München").setAmount(Long.parseLong("9781977791122"), 7);
+    localStocks.get("München").setAmount(Long.parseLong("9780739360385"), 50);
+    localStocks.get("München").setAmount(Long.parseLong("9780553382563"), 2);
+    localStocks.get("München").setAmount(Long.parseLong("9781977791122"), 7);
 
-    stocksPerCity.get("Osterhofen").setAmount(Long.parseLong("9780739360385"), 15);
-    stocksPerCity.get("Osterhofen").setAmount(Long.parseLong("9780553382563"), 2);
-    stocksPerCity.get("Osterhofen").setAmount(Long.parseLong("9781977791122"), 5);
-    stocksPerCity.get("Osterhofen").setAmount(Long.parseLong("9780262538473"), 8);
+    localStocks.get("Osterhofen").setAmount(Long.parseLong("9780739360385"), 15);
+    localStocks.get("Osterhofen").setAmount(Long.parseLong("9780553382563"), 2);
+    localStocks.get("Osterhofen").setAmount(Long.parseLong("9781977791122"), 5);
+    localStocks.get("Osterhofen").setAmount(Long.parseLong("9780262538473"), 8);
 
-    stocksPerCity.get("Lyon").setAmount(Long.parseLong("9780739360385"), 4);
-    stocksPerCity.get("Lyon").setAmount(Long.parseLong("9780262538473"), 2);
+    localStocks.get("Lyon").setAmount(Long.parseLong("9780739360385"), 4);
+    localStocks.get("Lyon").setAmount(Long.parseLong("9780262538473"), 2);
   }
 
   /**
@@ -131,9 +150,9 @@ public class GlobalStockImpl implements GlobalStock {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder("\n **************\n *    Stock   * \n **************\n");
-    for (String city : stocksPerCity.keySet()) {
+    for (String city : localStocks.keySet()) {
       sb.append(city).append(":\n");
-      sb.append(stocksPerCity.get(city));
+      sb.append(localStocks.get(city));
     }
     return sb.toString();
   }

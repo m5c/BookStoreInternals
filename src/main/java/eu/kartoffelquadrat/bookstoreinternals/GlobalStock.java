@@ -44,4 +44,5 @@ public interface GlobalStock {
    */
   Map<Long, Integer> getEntireStoreStock(String city);
 
+  boolean isEmplyed(String city, String name);
 }
