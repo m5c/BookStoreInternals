@@ -81,6 +81,16 @@ public class LocalStockImpl implements LocalStock {
   }
 
   /**
+   * Generates list of all employee's family names for this local store.
+   *
+   * @return list of strings with all employees family names.
+   */
+  @Override
+  public Collection<String> getAllEmployeeNames() {
+    return employees.stream().map(employe -> employe.getName()).toList();
+  }
+
+  /**
    * Returns the entire stock of this location, as an immutable map.
    *
    * @return a map, where the key is a book isbn and the value the amount in stock for this isbn.

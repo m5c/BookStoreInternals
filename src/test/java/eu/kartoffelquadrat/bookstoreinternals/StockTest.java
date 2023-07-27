@@ -109,7 +109,7 @@ public class StockTest {
   @Test
   public void testDefaultEmployeesLocations() {
     GlobalStock globalStock = getNewInstance();
-    assert globalStock.isEmplyed("Osterhofen", "Merkel");
+    assert globalStock.isEmployed("Osterhofen", "Merkel");
   }
 
   /**

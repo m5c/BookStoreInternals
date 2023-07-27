@@ -101,7 +101,7 @@ public class GlobalStockImpl implements GlobalStock {
    * @return true if such an employee works in that city, false otherwise.
    */
   @Override
-  public boolean isEmplyed(String city, String name) {
+  public boolean isEmployed(String city, String name) {
     return localStocks.get(city).hasEmployee(name);
   }
 

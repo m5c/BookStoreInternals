@@ -44,5 +44,12 @@ public interface GlobalStock {
    */
   Map<Long, Integer> getEntireStoreStock(String city);
 
-  boolean isEmplyed(String city, String name);
+  /**
+   * Helper method to look up if a local stock has a given employee.
+   *
+   * @param city as the location of the local stock store.
+   * @param name as the family name of the employee.
+   * @return true if such an employee works in that city, false otherwise.
+   */
+  boolean isEmployed(String city, String name);
 }

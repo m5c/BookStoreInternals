@@ -8,6 +8,12 @@ package eu.kartoffelquadrat.bookstoreinternals;
 public class DesktopLauncher {
 
   /**
+   * Default constructor.
+   */
+  public DesktopLauncher() {
+  }
+
+  /**
    * Creates a BookStore instance and prints the default data to screen.
    *
    * @param args not used. No runtime parameters expected.
