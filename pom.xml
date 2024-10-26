@@ -11,9 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <source>8</source>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
 
@@ -113,10 +111,11 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
+                    <failOnWarnings>true</failOnWarnings>
+                    <quiet>true</quiet>
                     <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                     <reportOutputDirectory>${project.reporting.outputDirectory}/docs
                     </reportOutputDirectory>
-                    <destDir>docs</destDir>
                 </configuration>
                 <executions>
                     <execution>
