@@ -7,10 +7,14 @@ import org.junit.Test;
  */
 public class LauncherTest {
 
-    @Test
-    public void testLauncherPrintings() {
+  @Test
+  public void testLauncherPrintings() {
 
-        DesktopLauncher desktopLauncher = new DesktopLauncher();
-        desktopLauncher.printData();
-    }
+    DesktopLauncher.main(new String[] {});
+  }
+
+  @Test
+  public void testLauncherInit() {
+      DesktopLauncher launcher = new DesktopLauncher();
+  }
 }

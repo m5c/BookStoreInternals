@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"eu.kartoffelquadrat.bookstoreinternals"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"eu.kartoffelquadrat.bookstoreinternals"}];updateSearchResults();

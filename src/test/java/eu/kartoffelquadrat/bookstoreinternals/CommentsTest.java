@@ -69,7 +69,32 @@ public class CommentsTest {
         assert comments.getAllCommentsForBook(harryPotterIsbn).size() == 0;
     }
 
-    @Test
+  /**
+   * Test deleting a comment with invalid book id
+   */
+  @Test(expected = RuntimeException.class)
+  public void testDeleteInvalidBookComment() {
+    AssortmentImpl.getInstance();
+    Comments comments = getNewCommentsInstance();
+
+    // Here we retrieve comments for a non-existing book.
+    comments.deleteComment(12345, 12345);
+  }
+
+  /**
+   * Test deleting a comment with invalid comment id
+   */
+  @Test(expected = RuntimeException.class)
+  public void testDeleteInvalidCommentId() {
+    AssortmentImpl.getInstance();
+    Comments comments = getNewCommentsInstance();
+    long harryPotterIsbn = Long.valueOf("9780739360385");
+
+    // Here we retrieve comments for a non-existing book.
+    comments.deleteComment(harryPotterIsbn, 12345);
+  }
+
+  @Test
     public void testEditComment() {
         AssortmentImpl.getInstance();
         Comments comments = getNewCommentsInstance();
